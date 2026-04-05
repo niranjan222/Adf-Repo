@@ -1,0 +1,78 @@
+{
+	"name": "ade_dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Ade_dataset",
+						"type": "DatasetReference"
+					},
+					"name": "sourcedataflow"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Ade_Destination_Transformdata",
+						"type": "DatasetReference"
+					},
+					"name": "Adedestination"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Adeselect"
+				},
+				{
+					"name": "Filterrows"
+				},
+				{
+					"name": "adesplit"
+				},
+				{
+					"name": "Adeaggregate"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          InvoiceNo as string,",
+				"          StockCode as string,",
+				"          Description as string,",
+				"          Quantity as short,",
+				"          InvoiceDate as timestamp,",
+				"          UnitPrice as integer,",
+				"          CustomerID as double,",
+				"          Country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> sourcedataflow",
+				"sourcedataflow select(mapColumn(",
+				"          InvoiceNo,",
+				"          StockCode,",
+				"          Description,",
+				"          UnitPrice,",
+				"          CustomerID,",
+				"          Country",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Adeselect",
+				"Adeselect filter(InvoiceNo!='537669') ~> Filterrows",
+				"Filterrows split(Country=='United Kingdom',",
+				"     Country=='Germany',",
+				"     disjoint: false) ~> adesplit@(UK, Germany, others)",
+				"adesplit@UK aggregate(groupBy(InvoiceNo),",
+				"     UnitPrice = sum(UnitPrice)) ~> Adeaggregate",
+				"Adeaggregate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Adedestination"
+			]
+		}
+	}
+}

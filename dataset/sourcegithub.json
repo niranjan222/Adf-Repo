@@ -1,0 +1,26 @@
+{
+	"name": "sourcegithub",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_github",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "niranjan222/Azure/refs/heads/main/img/sales_invoice.csv?token=GHSAT0AAAAAADYUAXGX4BWUJUEV4MRKL67Y2OERSBQ'/'.\\",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

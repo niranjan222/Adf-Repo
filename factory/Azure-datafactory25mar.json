@@ -1,0 +1,9 @@
+{
+	"name": "Azure-datafactory25mar",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "563c9c5b-d529-475e-92dc-51704369a91f",
+		"tenantId": "a2ff20f5-24c4-494b-98dd-e728a3da621e"
+	}
+}
