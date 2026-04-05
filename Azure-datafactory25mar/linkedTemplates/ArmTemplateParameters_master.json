@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Azure-datafactory25mar"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"LS_AmazonS3_secretAccessKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://datalakestorage25mar.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase_properties_typeProperties_server": {
+			"value": "sql-database-server31mar.database.windows.net"
+		},
+		"AzureSqlDatabase_properties_typeProperties_database": {
+			"value": "free-sql-db"
+		},
+		"AzureSqlDatabase_properties_typeProperties_userName": {
+			"value": "sqldatabase"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sql-database-server31mar.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "azure-sql-db"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sqldatabase"
+		},
+		"LS_AmazonS3_properties_typeProperties_accessKeyId": {
+			"value": "AKIA3BWHMIVFBOQ22RW6"
+		},
+		"LS_github_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
